@@ -1,42 +1,35 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>net.instantcom.mm7</groupId>
-	<artifactId>instantcom-mm7</artifactId>
-	<name>InstantCom MM7 Client</name>
-	<version>0.9.3</version>
-	<description>InstantCom MMS MM7 protocol client implementation</description>
-	<packaging>jar</packaging>
-	<url>https://github.com/mobiera/instantcom-mm7</url>
-
-	<licenses>
-		<license>
-			<name>CDDL 1.1</name>
-			<url>https://glassfish.java.net/public/CDDL+GPL_1_1.html</url>
-			<distribution>repo</distribution>
-		</license>
-		<license>
-			<name>GPL v2</name>
-			<url>http://opensource.org/licenses/GPL-2.0</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
-
-	<scm>
-		<url>https://github.com/mobiera/instantcom-mm7.git</url>
-		<connection>scm:git:git://github.com/mobiera/instantcom-mm7.git</connection>
-	</scm>
-
-	<developers>
-		<developer>
-			<name>Vjekoslav Nesek</name>
-			<email>f.rochette@mobiera.com</email>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>com.mobiera.libs</groupId>
+   <artifactId>mobiera-mm7</artifactId>
+   <version>1.0.0</version>
+   <name>Mobiera MM7</name>
+   <description>Client Library for MM7</description>
+   <url>https://github.com/mobiera/instantcom-mm7</url>
+   <licenses>
+      <license>
+         <name>CDDL v1</name>
+         <url>https://en.wikipedia.org/wiki/Common_Development_and_Distribution_License</url>
+      </license>
+   </licenses>
+   <developers>
+      <developer>
+         <name>Fabrice Rochette</name>
+         <email>f.rochette@mobiera.com</email>
          <organization>Mobiera</organization>
          <organizationUrl>https://www.mobiera.com</organizationUrl>
-		</developer>
-	</developers>
-
-	<properties>
+      </developer>
+   </developers>
+   <scm>
+      <connection>scm:git:git://github.com/mobiera/instantcom-mm7.git</connection>
+      <developerConnection>scm:git:ssh://github.com/mobiera/instantcom-mm7.git</developerConnection>
+      <url>https://github.com/mobiera/instantcom-mm7/tree/main</url>
+   </scm>
+   <properties>
+	   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <maven.compiler.source>11</maven.compiler.source>
+      <maven.compiler.target>11</maven.compiler.target>
 		<jdom.version>2.0.2</jdom.version>
 		<commons-codec.version>1.10</commons-codec.version>
 		<javax-mail.version>1.5.0-b01</javax-mail.version>
@@ -104,35 +97,53 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<configuration>
-						<source>1.7</source>
-						<target>1.7</target>
-						<encoding>utf-8</encoding>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
-
-	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>		
-	</distributionManagement>
-
-	<profiles>
-		<profile>
-			<id>release</id>
-			<build>
-				<plugins>
+   <build>
+      <pluginManagement>
+         <!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+         <plugins>
+            <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+            <plugin>
+               <artifactId>maven-clean-plugin</artifactId>
+               <version>3.1.0</version>
+            </plugin>
+            <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+            <plugin>
+               <artifactId>maven-resources-plugin</artifactId>
+               <version>3.0.2</version>
+            </plugin>
+            <plugin>
+               <artifactId>maven-compiler-plugin</artifactId>
+               <version>3.8.0</version>
+            </plugin>
+            <plugin>
+               <artifactId>maven-surefire-plugin</artifactId>
+               <version>2.22.1</version>
+            </plugin>
+            <plugin>
+               <artifactId>maven-jar-plugin</artifactId>
+               <version>3.0.2</version>
+            </plugin>
+            <plugin>
+               <artifactId>maven-install-plugin</artifactId>
+               <version>2.5.2</version>
+            </plugin>
+            <plugin>
+               <artifactId>maven-deploy-plugin</artifactId>
+               <version>2.8.2</version>
+            </plugin>
+            <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+            <plugin>
+               <artifactId>maven-site-plugin</artifactId>
+               <version>3.7.1</version>
+            </plugin>
+            <plugin>
+               <artifactId>maven-project-info-reports-plugin</artifactId>
+               <version>3.0.0</version>
+            </plugin>
+         </plugins>
+      </pluginManagement>
+      <finalName>${project.artifactId}</finalName>
+      <plugins>
          <plugin>
             <groupId>org.sonatype.central</groupId>
             <artifactId>central-publishing-maven-plugin</artifactId>
@@ -191,8 +202,9 @@
             </executions>
          </plugin>
       </plugins>
-			</build>
-		</profile>
-	</profiles>
-
+   </build>
 </project>
+
+
+
+

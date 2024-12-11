@@ -43,7 +43,7 @@ public interface VASP {
 	/**
 	 * Handles delivery report from MMSC.
 	 *
-	 * @param DeliveryReportReq
+	 * @param deliveryReportReq DeliveryReportReq
 	 *            MMS delivery report delivered from MMSC.
 	 *
 	 * @return deliveryReportRsp instance
@@ -56,7 +56,7 @@ public interface VASP {
 	/**
 	 * Handles read reply from MMSC.
 	 *
-	 * @param ReadReplyReq
+	 * @param readReplyReq ReadReplyReq
 	 *            MMS delivery read reply from MMSC.
 	 *
 	 * @return readReplyRsp instance
