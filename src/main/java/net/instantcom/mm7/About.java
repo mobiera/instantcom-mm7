@@ -33,7 +33,7 @@ interface About {
 	String VERSION = "0.9.0";
 
 	/** Library copyright */
-	String COPYRIGHT = "Copyright (c) InstantCom d.o.o. 2007-2014. All rights reserved.";
+	String COPYRIGHT = "Copyright (c) Mobiera. All rights reserved.";
 
 	/** Serial version UID used by classes in a package */
 	long SERIAL_VERSION_UID = Long.parseLong(VERSION.replace('.', '0'));

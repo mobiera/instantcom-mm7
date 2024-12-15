@@ -3,7 +3,7 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>com.mobiera.libs</groupId>
    <artifactId>mobiera-mm7</artifactId>
-   <version>1.0.0</version>
+   <version>1.0.1</version>
    <name>Mobiera MM7</name>
    <description>Client Library for MM7</description>
    <url>https://github.com/mobiera/instantcom-mm7</url>

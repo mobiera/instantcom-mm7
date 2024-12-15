@@ -24,6 +24,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 /**
  *
@@ -67,7 +69,13 @@ public abstract class MMSCBase implements MMSC {
 			// HTTP Basic authorization
 			if (ctx.getUsername() != null) {
 				String authString = ctx.getUsername() + ':' + ctx.getPassword();
-				try {
+				
+				String encoding3 = Base64.getEncoder().encodeToString(
+						authString.getBytes(StandardCharsets.UTF_8));
+				
+				conn.setRequestProperty("Authorization", "Basic " + encoding3);
+				
+				/*try {
 					ByteArrayOutputStream buffer = new ByteArrayOutputStream(128);
 					OutputStream buffer64 = ctx.newBase64OutputStream(buffer);
 					buffer64.write(authString.getBytes("iso-8859-1"));
@@ -75,7 +83,7 @@ public abstract class MMSCBase implements MMSC {
 					conn.setRequestProperty("Authorization", "Basic " + buffer.toString("iso-8859-1"));
 				} catch (IOException ioe) {
 					throw new RuntimeException("Failed to add HTTP Basic Authorization header", ioe);
-				}
+				}*/
 			}
 
 			final OutputStream out = conn.getOutputStream();
